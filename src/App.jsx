@@ -1,8 +1,10 @@
 import { createRoot } from 'react-dom/client';
-// import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import Shops from './Shops';
+// Components
+import Home from './pages/Home';
+import Shop from './pages/Shop';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,12 +17,17 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div>
-        <h1>Vite - React Query</h1>
-        <Shops />
-      </div>
-    </QueryClientProvider>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <div>
+          <h1>Coffee Shops - REST API</h1>
+        </div>
+        <Routes>
+          <Route path='/:id' element={<Shop />} />
+          <Route path='/' element={<Home />} />
+        </Routes>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 };
 
