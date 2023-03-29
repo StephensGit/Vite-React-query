@@ -1,11 +1,11 @@
-import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import fetchShop from '../api/fetchShop';
+import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import fetchShop from "../api/fetchShop";
 
 const Shop = () => {
   const { id } = useParams();
-  const results = useQuery(['shop', id], fetchShop);
+  const results = useQuery(["shop", id], fetchShop);
   const navigate = useNavigate();
 
   if (results.isLoading) {
@@ -21,10 +21,10 @@ const Shop = () => {
 
   return (
     <div>
-      <h1>Shop Page - {id}</h1>
+      <h1>Shop Page - {shop?.name}</h1>
       <button
         onClick={() => {
-          navigate('/');
+          navigate("/");
         }}
       >
         Back

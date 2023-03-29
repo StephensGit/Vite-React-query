@@ -5,7 +5,7 @@ const fetchShop = async ({ queryKey }) => {
 
   // if error throw error - REACT QUERY expects this
   if (!apiRes.ok) {
-    throw new Error(`Soaps not found`);
+    throw new Error(`Shops not found`);
   }
   // React Query expects you return a promise
   const data = await apiRes.json();
